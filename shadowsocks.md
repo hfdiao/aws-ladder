@@ -4,23 +4,21 @@ Edit "Security Group", allow accessing TCP port 8388 from 0.0.0.0/0
 
 # Server
 ## install pip
-```
+```sh
 wget https://bootstrap.pypa.io/get-pip.py  --no-check-certificate
 sudo python get-pip.py
 ```
 
 ## install shadowsocks
-```
+```sh
 sudo pip install shadowsocks
 ```
 
 ## config shadowsocks
 
-```
-sudo vi /etc/shadowsocks/config.json
-```
-
 ```js
+// file: /etc/shadowsocks/config.json
+
 {
     "server_port":8388,
     "password":"$password",
@@ -34,11 +32,12 @@ sudo vi /etc/shadowsocks/config.json
 
 ```
 sudo useradd shadowsocks
-sudo vi /etc/init.d/shadowsocks
 ```
 
 ```sh
 #!/bin/sh
+
+# file: /etc/init.d/shadowsocks
 
 PIDFILE=/var/run/shadowsocks.pid
 LOGFILE=/var/log/shadowsocks.log
